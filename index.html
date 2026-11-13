@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كل عام وأنتِ بخير يا ذكرى 🎂✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            user-select: none;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 50%, #7928ca 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            overflow: hidden;
+        }
+
+        .card-box {
+            background: #ffffff;
+            border: 4px solid #4a154b;
+            border-radius: 20px;
+            box-shadow: 8px 8px 0px #4a154b;
+            width: 100%;
+            max-width: 400px;
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        h2 {
+            color: #ff0a54;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            font-weight: 900;
+        }
+
+        p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .step { display: none; }
+        .step.active { display: block; animation: fadeIn 0.3s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .btn {
+            background: #ff4d6d;
+            color: white;
+            border: 3px solid #4a154b;
+            border-radius: 12px;
+            padding: 10px 22px;
+            font-size: 1rem;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px #4a154b;
+            transition: 0.1s;
+            margin: 8px;
+        }
+
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #4a154b;
+        }
+
+        .btn-alt { background: #ffd166; color: #4a154b; }
+
+        .gift-icon {
+            font-size: 80px;
+            cursor: pointer;
+            display: inline-block;
+            margin: 15px 0;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .pin-screen {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: #ff0a54;
+            background: #f8f9fa;
+            border: 3px solid #4a154b;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 15px;
+            direction: ltr;
+        }
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            direction: ltr;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+
+        .key {
+            background: #ffe5ec;
+            border: 2px solid #4a154b;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px #4a154b;
+        }
+
+        .final-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ff0a54;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 0px #ffe5ec;
+        }
+
+        .final-name {
+            background: #ffd166;
+            border: 2px solid #4a154b;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #4a154b;
+        }
+
+        .letter-box {
+            background: #fff9fb;
+            border: 2px dashed #ff4d6d;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: right;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-box">
+        
+        <!-- المرحلة 1 -->
+        <div class="step active" id="s1">
+            <h2>مفاجأة في طريقها إليكِ! 🎁</h2>
+            <p>اضغطي على الهدية لفتح المغامرة...</p>
+            <div class="gift-icon" onclick="goTo(2)">🎁</div>
+            <br>
+            <button class="btn" onclick="goTo(2)">افتحي الهدية هنا</button>
+        </div>
+
+        <!-- المرحلة 2 -->
+        <div class="step" id="s2">
+            <h2>هل أنتِ مستعدة؟ 🧸</h2>
+            <p>هناك سر جميل بانتظارك بالداخل...</p>
+            <button class="btn" onclick="goTo(3)">نعم، مستعدة جداً! 😍</button>
+            <button class="btn btn-alt" onclick="goTo(3)">موافقة</button>
+        </div>
+
+        <!-- المرحلة 3 -->
+        <div class="step" id="s3">
+            <h2>أدخلي رمز الدخول 🔐</h2>
+            <p>اكتبي تاريخ ميلادك أو أي أرقام تفضلينها</p>
+            <div class="pin-screen" id="pinBox">----</div>
+            <div class="keypad">
+                <button class="key" onclick="addNum('1')">1</button>
+                <button class="key" onclick="addNum('2')">2</button>
+                <button class="key" onclick="addNum('3')">3</button>
+                <button class="key" onclick="addNum('4')">4</button>
+                <button class="key" onclick="addNum('5')">5</button>
+                <button class="key" onclick="addNum('6')">6</button>
+                <button class="key" onclick="addNum('7')">7</button>
+                <button class="key" onclick="addNum('8')">8</button>
+                <button class="key" onclick="addNum('9')">9</button>
+                <button class="key" onclick="clearPin()" style="background:#ffd166;">مسح</button>
+                <button class="key" onclick="addNum('0')">0</button>
+                <button class="key" onclick="checkPin()" style="background:#06d6a0;">فتح</button>
+            </div>
+        </div>
+
+        <!-- المرحلة 4: النهاية السعيدة والفرقعة -->
+        <div class="step" id="s4">
+            <div style="font-size: 40px; margin-bottom: 5px;">🎉🎂🎈</div>
+            <h1 class="final-title">كل عام وأنتِ بخير</h1>
+            <div class="final-name">ذكرى عمر نمر 💖</div>
+            
+            <div class="letter-box">
+                إلى أختي الصغرى وصديقتي الغالية <b>ذكرى</b>،<br><br>
+                أردت أن أعايدكِ اليوم بطريقة مميزة تشبه لُطف قلبكِ وجمال روحكِ. أتمنى لكِ عاماً جديداً مليئاً بالسعادة، الضحكات التي لا تنتهي، وتحقيق كل ما يتمنى قلبكِ.<br><br>
+                دائماً أتمنى أن تبقي مبتسمة وسعيدة، وكل سنة وأنتِ بألف خير يا أطيب أخت في الدنيا ✨🌸
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentPin = "";
+
+        function goTo(stepNum) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.getElementById('s' + stepNum).classList.add('active');
+        }
+
+        function addNum(n) {
+            if (currentPin.length < 6) {
+                currentPin += n;
+                document.getElementById('pinBox').innerText = currentPin;
+            }
+        }
+
+        function clearPin() {
+            currentPin = "";
+            document.getElementById('pinBox').innerText = "----";
+        }
+
+        function checkPin() {
+            if (currentPin.length > 0) {
+                goTo(4);
+            } else {
+                alert("أدخلي الرمز أولاً يا ذكرى! 😊");
+            }
+        }
+    </script>
+</body>
+</html>
